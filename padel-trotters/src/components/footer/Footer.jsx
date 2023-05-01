@@ -12,7 +12,7 @@ export const Footer = () => {
         </Col>
         <Col md={4}>
           <h5>Email</h5>
-          <p>clinicadental@dentclinic.com</p>
+          <p>padeltrotters@padeleros.com</p>
         </Col>
         <Col md={4}>
           <h5>Telefono</h5>
