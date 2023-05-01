@@ -1,5 +1,3 @@
-import React from "react";
-
 export const validate = (name, data, required) => {
   switch (name) {
     case "name":

@@ -1,5 +1,5 @@
 import React from "react";
-import Form from "react-bootstrap";
+import Form from "react-bootstrap/Form";
 import './InputText.css';
 
 export const InputText = ({
@@ -9,6 +9,7 @@ export const InputText = ({
   placeholder,
   required,
   changeFunction,
+  blurFunction,
   maxLength,
 }) => {
   return (
@@ -19,7 +20,8 @@ export const InputText = ({
         name={name}
         placeholder={placeholder}
         required={required}
-        changeFunction={changeFunction}
+        onChange={(e)=>changeFunction(e)}
+        onBlur={(e)=>blurFunction(e)}
         maxLength={maxLength}
       />
     </>
