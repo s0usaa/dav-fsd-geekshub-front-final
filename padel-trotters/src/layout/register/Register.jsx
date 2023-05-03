@@ -96,7 +96,7 @@ export const Register = () => {
     register(credenciales)
     .then(()=>{
       setTimeout(()=>{
-        navigate('/');
+        navigate('/login');
       },1500);
     })
     .catch((error)=> console.log(error));

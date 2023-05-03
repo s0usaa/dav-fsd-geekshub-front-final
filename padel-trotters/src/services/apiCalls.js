@@ -21,3 +21,16 @@ export const viewProfile = async(token) => {
     };
     return await axios.get(`${root}user/profile`, config);
 };
+
+//Ver las pistas
+export const viewTracks = async(token) => {
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    // let res = await axios.get(`${root}user/tracks`, config);
+    // console.log(res);
+    // return res.data;
+    return await axios.get(`${root}user/tracks`, config);
+};

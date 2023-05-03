@@ -1,7 +1,41 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
+import { userData } from '../../services/userSlice';
+import { viewTracks } from '../../services/apiCalls';
 
 export const Tracks = () => {
+  const credentialsRdx = useSelector(userData);
+
+  const [tracks, setTracks] = useState([]);
+
+  useEffect(()=>{
+    if(tracks.length === 0){
+      viewTracks(credentialsRdx.credentials.token)
+      .then((respuesta)=>{
+        setTracks(respuesta.data.data);
+      })
+      .catch((error)=> console.log(error));
+    }
+  },[tracks]);
+
   return (
-    <div>Tracks</div>
+    <div>
+    {tracks.length > 0 ?(
+      <div>
+        {tracks.map((pistas)=>{
+          return (
+            <>
+            <div key={pistas.id}></div>
+              <div>
+                {pistas.track_number}{pistas.type}
+              </div>
+            </>
+          );
+        })}
+      </div>
+    ): (
+      <div>Estan viniendo</div>
+    )}
+    </div>
   )
 }
