@@ -84,9 +84,9 @@ export const validate = (name, data, required) => {
       }
       return { message: "", validated: true };
 
-    case "level":
-    case "lvl":
     case "nivel":
+    case "lvl":
+    case "level":
       if (data === "" && required === true) {
         return { message: "Rellena los campos vacios", validation: false };
       }

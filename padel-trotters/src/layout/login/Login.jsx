@@ -100,7 +100,7 @@ export const Login = () => {
           usuario: decodificado,
         };
         dispatch(login({ credentials: datosBackend }));
-        setWelcome(`Bienvenid@ de nuevo ${datosBackend.usuario.email}`);
+        setWelcome(`Bienvenid@ de nuevo ${datosBackend.usuario.name}`);
         setTimeout(() => {
           navigate("/");
         }, 2500);

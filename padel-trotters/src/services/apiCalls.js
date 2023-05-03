@@ -11,3 +11,13 @@ export const loguin = async(body)=>{
 export const register = async (body) => {
     return await axios.post(`${root}auth/register`, body);
   };
+
+//Ver perfil usuario
+export const viewProfile = async(token) => {
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.get(`${root}user/profile`, config);
+};

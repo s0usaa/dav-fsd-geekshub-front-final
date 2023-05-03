@@ -1,0 +1,30 @@
+.registerDesign{
+    min-height: 100vh;
+}
+
+.registerCol{
+    background-color: rgb(241, 241, 241);
+    border-radius: 1em;
+    box-shadow: 0.5em 0.5em 0.3em 0.3em grey;
+}
+
+.registerSendDeac {
+    height: 2em;
+    width: 9em;
+    background-color: black;
+    border-radius: 0.2em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.registerSendAct {
+    cursor: pointer;
+    background-color: red;
+}
+
+.registerSendAct:hover {
+    transition: 1s;
+    background-color: darkred;
+}

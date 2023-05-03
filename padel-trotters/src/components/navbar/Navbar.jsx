@@ -26,9 +26,34 @@ export const NavBar = () => {
           <Nav className="me-auto">
           </Nav>
           <Nav>
+            {!credencialesRdx.credentials.usuario ? (
+              <>
             <Nav.Link as={Link} to={'/register'} >Register</Nav.Link>
             <Nav.Link as={Link} to={'/login'} >Login</Nav.Link>
             <Nav.Link as={Link} to={'/contact'}>Contacto</Nav.Link>
+              </>
+            ): credencialesRdx.credentials.usuario.roleId === 2 ?(
+              <>
+            <Nav.Link as={Link} to={'/coaches'} >Entrenadores</Nav.Link>
+            <Nav.Link as={Link} to={'/tracks'} >Pistas</Nav.Link>
+            <Nav.Link as={Link} to={'/matches'} >Partidas</Nav.Link>
+            <Nav.Link as={Link} to={'/profile'} >Usuario</Nav.Link>
+            <Nav.Link as={Link} to={'/'} onClick={()=>logout()}>Logout</Nav.Link>
+            <Nav.Link as={Link} to={'/contact'}>Contacto</Nav.Link>
+              </>
+            ): credencialesRdx.credentials.usuario.roleId === 1 ? (
+              <>
+            <Nav.Link as={Link} to={'/coaches'} >Entrenadores</Nav.Link>
+            <Nav.Link as={Link} to={'/users'} >Usuarios</Nav.Link>
+            <Nav.Link as={Link} to={'/tracks'} >Pistas</Nav.Link>
+            <Nav.Link as={Link} to={'/matches'} >Partidas</Nav.Link>
+            <Nav.Link as={Link} to={'/'} >Admin</Nav.Link>
+            <Nav.Link as={Link} to={'/'} onClick={()=>logout()}>Logout</Nav.Link>
+            <Nav.Link as={Link} to={'/contact'}>Contacto</Nav.Link>
+              </>
+            ):(
+              <Nav.Link as={Link} to={'/'} onClick={()=>logout()}>Logout</Nav.Link>
+            )}
           </Nav>
         </Navbar.Collapse>
       </Container>
