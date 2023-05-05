@@ -9,6 +9,7 @@ import { Coaches } from '../coaches/Coaches';
 import { Matches } from '../matches/Matches';
 import { Users } from '../users/Users';
 import { Profile } from '../profile/Profile';
+import { Detail } from '../detail/Detail';
 
 export const Body = () => {
   return (
@@ -24,6 +25,7 @@ export const Body = () => {
         <Route path='/matches' element={<Matches/>}/>
         <Route path='/users' element={<Users/>}/>
         <Route path='/profile' element={<Profile/>}/>
+        <Route path='/detail' element={<Detail/>}/>
     </Routes>
     </>
   )

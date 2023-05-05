@@ -42,7 +42,18 @@ export const viewCoaches = async(token)=>{
             Authorization: `Bearer ${token}`
         },
     };
-    let res = await axios.get(`${root}user/coaches`, config);
-    console.log(res);
-    return res
+    // let res = await axios.get(`${root}user/coaches`, config);
+    // console.log(res);
+    // return res
+    return await axios.get(`${root}user/coaches`, config);
+}
+
+//Ver usuarios como admin
+export const viewAllUsers = async(token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.get(`${root}admin/users`, config);
 }
