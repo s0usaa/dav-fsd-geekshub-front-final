@@ -34,3 +34,15 @@ export const viewTracks = async(token) => {
     // return res.data;
     return await axios.get(`${root}user/tracks`, config);
 };
+
+//Ver los entrenadores
+export const viewCoaches = async(token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    let res = await axios.get(`${root}user/coaches`, config);
+    console.log(res);
+    return res
+}
