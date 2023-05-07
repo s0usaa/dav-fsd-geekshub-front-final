@@ -57,3 +57,13 @@ export const viewAllUsers = async(token)=>{
     };
     return await axios.get(`${root}admin/users`, config);
 }
+
+//Crear una partida
+export const newMatch = async(body, token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.post(`${root}user/match`, body, config);
+}

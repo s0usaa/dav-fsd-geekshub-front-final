@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { userData } from '../../services/userSlice'
 import { viewCoaches } from '../../services/apiCalls';
+import Spinner from 'react-bootstrap/esm/Spinner';
 
 export const Coaches = () => {
   const credentialsRdx = useSelector(userData);
@@ -32,7 +33,7 @@ export const Coaches = () => {
           })}
         </div>
       ) : (
-        <div>Estan viniendo</div>
+        <Spinner animation="border" variant="info" />
       )}
     </div>
   )

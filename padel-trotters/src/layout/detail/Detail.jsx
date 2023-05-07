@@ -4,7 +4,6 @@ import { detailData } from '../../services/detailSlice';
 
 export const Detail = () => {
     const detailRdx = useSelector(detailData);
-    console.log(detailRdx);
 
     useEffect(()=> {}, []);
 
