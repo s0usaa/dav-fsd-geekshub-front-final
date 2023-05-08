@@ -6,6 +6,7 @@ import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Form from "react-bootstrap/Form";
+import dayjs from 'dayjs';
 
 export const Bookings = () => {
   const credencialesRdx = useSelector(userData);
@@ -54,7 +55,7 @@ export const Bookings = () => {
                     <Col>
                       <Form.Control
                         type="text"
-                        placeholder={partidas.date}
+                        placeholder={dayjs(partidas.date).format('DD/MM/YYYY HH:mm')}
                         readOnly
                       />
                     </Col>
