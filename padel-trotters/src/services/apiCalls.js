@@ -67,3 +67,13 @@ export const newMatch = async(body, token)=>{
     };
     return await axios.post(`${root}user/match`, body, config);
 }
+
+//Ver reservas
+export const viewMatches = async(token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.get(`${root}user/match`, config);
+}

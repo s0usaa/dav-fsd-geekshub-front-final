@@ -33,6 +33,7 @@ export const NavBar = () => {
               </>
             ): credencialesRdx.credentials.usuario.roleId === 2 ?(
               <>
+            <Nav.Link as={Link} to={'/bookings'} >Reservas</Nav.Link>
             <Nav.Link as={Link} to={'/coaches'} >Entrenadores</Nav.Link>
             <Nav.Link as={Link} to={'/tracks'} >Pistas</Nav.Link>
             <Nav.Link as={Link} to={'/matches'} >Partidas</Nav.Link>

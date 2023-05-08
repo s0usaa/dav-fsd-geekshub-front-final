@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { userData } from '../../services/userSlice';
-import { newMatch, viewTracks } from '../../services/apiCalls';
+import { newMatch } from '../../services/apiCalls';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
@@ -11,41 +11,32 @@ import DatePicker from 'react-datepicker';
 import setMinutes from 'date-fns/setMinutes';
 import setHours from 'date-fns/setHours';
 import 'react-datepicker/dist/react-datepicker.css';
+import { InputText } from '../../components/inputtext/InputText';
+import './Matches.css';
 
 export const Matches = () => {
 const navigate = useNavigate();
 const [welcome, setWelcome] = useState('');
 const credencialesRdx = useSelector(userData);
-const [tracks , setTracks] = useState([]);
-const [selectTrack, setSelectTrack] = useState('');
 const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(),0),10))
 
 const [match, setMatch] = useState({
-  track_id: selectTrack,
-  date: startDate
+  track_id: '',
+  date: ''
 });
 
-// const inputHandler = (e) =>{
-//   setMatch((prevState)=>({
-//     ...prevState,
-//     [e.target.name]: e.target.value,
-//   }));
-// };
-
-useEffect(()=>{
-  if(tracks.length === 0){
-    viewTracks(credencialesRdx.credentials.token)
-    .then((respuesta)=>{
-      setTracks(respuesta.data.data);
-    })
-    .catch((error)=> console.log(error));
-  }
-},[tracks]);
+const inputHandler = (e) =>{
+  setMatch((prevState)=>({
+    ...prevState,
+    [e.target.name]: e.target.value,
+  }));
+};
 
 const createMatch = ()=> {
+  match.date = startDate
   newMatch(match, credencialesRdx.credentials.token)
   .then((resultado)=>{
-    setMatch(resultado.data.data);
+    setMatch(resultado.data);
     setWelcome(`Vas a jugar una partida el dia: ${match.date}`);
     setTimeout(()=>{
       navigate('/');
@@ -55,7 +46,7 @@ const createMatch = ()=> {
     setMatch(error.message);
   });
 };
-
+console.log(match);
   return (
     <Container>
     {welcome !== "" ? (
@@ -71,23 +62,15 @@ const createMatch = ()=> {
         <Form>
           <Form.Group className="mb-3" controlId="formBasicDoctor">
             <Form.Label>Pistas</Form.Label>
-            <Form.Select onChange={(e)=>{setSelectTrack(e.target.value)}}>
-              <option>Selecciona una pista</option>
-              {tracks.map((pistas)=>(
-                <option key={pistas.id}>
-                  {pistas.track_number}-{pistas.type}
-                </option>
-              ))}
-            </Form.Select>
-            {/* <InputText
-              className={""}
-              type={"number"}
-              name={"doctor_id"}
-              placeholder={"Selecciona el doctor 1 o 2"}
-              maxLenght={1}
-              changeFunction={(e) => inputHandler(e)}
-              blurFunction={(e)=> (e)}
-            /> */}
+              <InputText
+              className={''}
+              type={'text'}
+              name={'track_id'}
+              placeholder={'Selecciona pista de 1 a la 4'}
+              maxLength={1}
+              changeFunction={inputHandler}
+              blurFunction={(e)=>(e)}
+              />
           </Form.Group>
           <Form.Group className="mb-1" controlId="formBasicDate">
             <Form.Label>Fecha</Form.Label>
@@ -100,14 +83,6 @@ const createMatch = ()=> {
             minTime={setHours(setMinutes(new Date(),0),10)}
             maxTime={setHours(setMinutes(new Date(),30),19)}
             dateFormat='dd/MM/yyyy HH:mm'/>
-            {/* <DatePicker
-            selected={date}
-            onChange={(fecha)=>setDate(fecha)}
-            dateFormat="dd/MM/yyyy"
-            timeInputLabel="Fecha:"
-            minDate={new Date()}
-            placeholderText="Selecciona una fecha"
-            /> */}
           </Form.Group>
           <div className="loginSendDeac loginSendAct m-3" onClick={createMatch}>
             Crear Partida
