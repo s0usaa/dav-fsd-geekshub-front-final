@@ -1,16 +1,38 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { userData } from "../../services/userSlice";
-import { viewMatches } from "../../services/apiCalls";
+import { deleteMatch, viewMatches } from "../../services/apiCalls";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Form from "react-bootstrap/Form";
 import dayjs from 'dayjs';
+import { useNavigate } from "react-router-dom";
+import './Bookings.css'
 
 export const Bookings = () => {
+  const navigate = useNavigate();
   const credencialesRdx = useSelector(userData);
   const [userMatch, setUserMatch] = useState([]);
+  const [welcome, setWelcome] = useState('');
+
+  const delMatch = (partidas)=> {
+    deleteMatch(partidas.id, credencialesRdx.credentials.token)
+    .then(
+      ()=>{
+        setTimeout(()=>{
+          viewMatches(credencialesRdx.credentials.token)
+          .then((respuesta)=>{
+            setUserMatch(respuesta.data.data)
+            setWelcome('Partida borrada correctamente')
+          })
+          .catch((error)=> console.log(error));
+          navigate('/bookings')
+        },500);
+      }
+    )
+    .catch((error) => console.log(error));
+  }
 
   useEffect(() => {
     if (userMatch.length === 0) {
@@ -21,11 +43,17 @@ export const Bookings = () => {
         .catch((error) => console.log(error));
     }
   }, [userMatch]);
-  console.log(userMatch);
 
   return (
     <Container fluid>
-      <Row className="appointmentDesign align-items-center d-flex justify-content-center mt-5">
+      {welcome !== '' ? (
+        <Row className="appointmentDesign d-flex justify-content-center align-items-center">
+        <Col xs={10} sm={6} className="loginCol">
+          <h1>{welcome}</h1>
+        </Col>
+      </Row>
+      ) : (
+        <Row className="appointmentDesign align-items-center d-flex justify-content-center mt-5">
         <Col xs={12} sm={8} lg={6}>
           <h3 className="text-center mt-3">Mis Reservas</h3>
           {userMatch.map((partidas) => {
@@ -77,11 +105,15 @@ export const Bookings = () => {
                     </Col>
                   </Form.Group>
                 </div>
+                <div className="loginSendDeac loginSendAct m-3" onClick={() =>delMatch(partidas)}>
+            Eliminar reserva
+          </div>
               </Form>
             );
           })}
         </Col>
       </Row>
+      )}
     </Container>
   );
 };

@@ -29,9 +29,6 @@ export const viewTracks = async(token) => {
             Authorization: `Bearer ${token}`
         },
     };
-    // let res = await axios.get(`${root}user/tracks`, config);
-    // console.log(res);
-    // return res.data;
     return await axios.get(`${root}user/tracks`, config);
 };
 
@@ -76,4 +73,14 @@ export const viewMatches = async(token)=>{
         },
     };
     return await axios.get(`${root}user/match`, config);
+}
+
+//Borrar una reserva
+export const deleteMatch = async(params, token)=>{
+    const config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.delete(`${root}user/match/${params}`, config)
 }

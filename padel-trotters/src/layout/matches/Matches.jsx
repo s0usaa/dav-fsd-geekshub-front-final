@@ -7,18 +7,23 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
-import DatePicker from 'react-datepicker';
+import DatePicker, { setDefaultLocale } from 'react-datepicker';
+import { registerLocale } from 'react-datepicker';
+import es from 'date-fns/locale/es';
+registerLocale('es', es);
 import setMinutes from 'date-fns/setMinutes';
 import setHours from 'date-fns/setHours';
 import 'react-datepicker/dist/react-datepicker.css';
 import { InputText } from '../../components/inputtext/InputText';
 import './Matches.css';
+import dayjs from 'dayjs';
 
 export const Matches = () => {
 const navigate = useNavigate();
 const [welcome, setWelcome] = useState('');
 const credencialesRdx = useSelector(userData);
 const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(),0),10))
+const [language, setLanguage] = useState('es');
 
 const [match, setMatch] = useState({
   track_id: '',
@@ -37,7 +42,7 @@ const createMatch = ()=> {
   newMatch(match, credencialesRdx.credentials.token)
   .then((resultado)=>{
     setMatch(resultado.data);
-    setWelcome(`Vas a jugar una partida el dia: ${match.date}`);
+    setWelcome(`Vas a jugar una partida el dia: ${dayjs(match.date).format('DD/MM/YYYY')} a las: ${dayjs(match.date).format('HH:mm')}`);
     setTimeout(()=>{
       navigate('/');
     },2500);
@@ -82,7 +87,9 @@ console.log(match);
             showTimeSelect
             minTime={setHours(setMinutes(new Date(),0),10)}
             maxTime={setHours(setMinutes(new Date(),30),19)}
-            dateFormat='dd/MM/yyyy HH:mm'/>
+            dateFormat='dd/MM/yyyy HH:mm'
+            locale='es'
+            />
           </Form.Group>
           <div className="loginSendDeac loginSendAct m-3" onClick={createMatch}>
             Crear Partida
