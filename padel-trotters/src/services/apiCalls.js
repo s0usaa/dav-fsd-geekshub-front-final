@@ -86,11 +86,12 @@ export const deleteMatch = async(params, token)=>{
 }
 
 //Modificar una partida
-export const updateMatches = async(body, token)=>{
+export const updateMatches = async(params, body, token)=>{
+    console.log(params, body);
     let config = {
         headers: {
             Authorization: `Bearer ${token}`
         },
     };
-    return await axios.put(`${root}user/match`, body, config)
+    return await axios.put(`${root}user/match/${params}`, body, config)
 }
