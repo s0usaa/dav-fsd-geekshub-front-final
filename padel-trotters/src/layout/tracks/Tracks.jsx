@@ -21,16 +21,24 @@ export const Tracks = () => {
 
   return (
     <div>
-    {tracks.length > 0 ?(
+    {tracks.length > 0 && credentialsRdx.credentials.usuario.roleId === 1 ?(
       <div>
         {tracks.map((pistas)=>{
           return (
-            <>
-            <div key={pistas.id}></div>
-              <div>
-                {pistas.track_number}{pistas.type}
-              </div>
-            </>
+            <div key={pistas.id}>
+            <div>{pistas.track_number}{pistas.type}</div>
+            <div>Que te jodan</div>
+            </div>
+          );
+        })}
+      </div>
+    ): tracks.length > 0 && credentialsRdx.credentials.usuario.roleId === 2 ?(
+      <div>
+        {tracks.map((pistas)=>{
+          return (
+            <div key={pistas.id}>
+            <div>{pistas.track_number}{pistas.type}</div>
+            </div>
           );
         })}
       </div>
