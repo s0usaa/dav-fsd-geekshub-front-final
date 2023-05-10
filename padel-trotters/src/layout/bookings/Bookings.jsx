@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userData } from "../../services/userSlice";
 import {
   deleteMatch,
@@ -19,9 +19,9 @@ import ReactDatePicker from "react-datepicker";
 import setMinutes from "date-fns/setMinutes";
 import setHours from "date-fns/setHours";
 import "react-datepicker/dist/react-datepicker.css";
+import { addChoosen, detailData } from "../../services/detailSlice";
 
 export const Bookings = () => {
-  const navigate = useNavigate();
   const credencialesRdx = useSelector(userData);
   const [userMatch, setUserMatch] = useState([]);
   const [welcome, setWelcome] = useState("");
@@ -31,6 +31,7 @@ export const Bookings = () => {
   const [startDate, setStartDate] = useState(
     setHours(setMinutes(new Date(), 0), 10)
   );
+  const dispatch = useDispatch();
 
   const delMatch = (partidas) => {
     deleteMatch(partidas.id, credencialesRdx.credentials.token)
@@ -39,7 +40,6 @@ export const Bookings = () => {
           viewMatches(credencialesRdx.credentials.token)
             .then((respuesta) => {
               setUserMatch(respuesta.data.data);
-              navigate("/bookings");
             })
             .catch((error) => console.log(error));
         }, 500);
@@ -48,9 +48,9 @@ export const Bookings = () => {
   };
 
   const [upMatch, setUpMatch] = useState({
-    id: '',
-    track_id: "",
-    date: "",
+    // id: partidasRedux.choosenObject.id, si lo hacemos por body
+    track_id: '',
+    date: '',
   });
 
   const inputHandler = (e) => {
@@ -62,16 +62,21 @@ export const Bookings = () => {
 
   const updateMatch = () => {
     upMatch.date = startDate;
-    updateMatches(upMatch, credencialesRdx.credentials.token)
+    updateMatches( partidasRedux.choosenObject.id ,upMatch, credencialesRdx.credentials.token)
       .then((resultado) => {
         setUpMatch(resultado.data);
+        setWelcome('Hola q ase')
         setTimeout(() => {
-          navigate("/");
+          handleClose();
+          setWelcome('');
+          viewMatches(credencialesRdx.credentials.token)
+            .then((respuesta) => {
+              setUserMatch(respuesta.data.data);
+            })
+            .catch((error) => console.log(error));
         }, 500);
       })
-      .catch((error) => {
-        setUpMatch(error.message);
-      });
+      .catch((error) => console.log(error));
   };
 
   useEffect(() => {
@@ -83,6 +88,16 @@ export const Bookings = () => {
         .catch((error) => console.log(error));
     }
   }, [userMatch]);
+
+  const selected = (matches)=>{
+    dispatch(addChoosen({choosenObject: matches}));
+    handleShow();
+  };
+
+  const partidasRedux = useSelector(detailData);
+
+  console.log(partidasRedux);
+
 
   return (
     <Container fluid>
@@ -156,7 +171,7 @@ export const Bookings = () => {
                     </div>
                     <div
                       className="loginSendDeac loginSendAct m-3"
-                      onClick={handleShow}
+                      onClick={()=>selected(partidas)}
                     >
                       Modificar reserva
                     </div>
@@ -167,7 +182,7 @@ export const Bookings = () => {
                       <Modal.Body>
                         <Form>
                           <Form.Group className="mb-3" controlId="input1">
-                          <Form.Label>Numero reserva</Form.Label>
+                          {/* <Form.Label>Numero reserva</Form.Label>
                             <InputText
                               className={""}
                               type={"text"}
@@ -176,7 +191,7 @@ export const Bookings = () => {
                               maxLength={3}
                               changeFunction={inputHandler}
                               blurFunction={(e) => e}
-                            />
+                            /> */}
                             <Form.Label>Numero de pista</Form.Label>
                             <InputText
                               className={""}
