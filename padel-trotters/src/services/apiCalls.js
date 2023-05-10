@@ -77,10 +77,20 @@ export const viewMatches = async(token)=>{
 
 //Borrar una reserva
 export const deleteMatch = async(params, token)=>{
-    const config = {
+    let config = {
         headers: {
             Authorization: `Bearer ${token}`
         },
     };
     return await axios.delete(`${root}user/match/${params}`, config)
+}
+
+//Modificar una partida
+export const updateMatches = async(body, token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.put(`${root}user/match`, body, config)
 }

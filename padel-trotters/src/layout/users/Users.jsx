@@ -46,7 +46,10 @@ export const Users = () => {
         })}
       </div>
     ) : (
-      <Spinner animation="border" variant="info" />
+      <div>
+      <Spinner animation="border" variant="info"/>
+      <span>Cargando...</span>
+      </div>
     )}
     </>
   )

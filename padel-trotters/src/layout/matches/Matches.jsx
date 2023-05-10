@@ -7,7 +7,7 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
 import Col from 'react-bootstrap/esm/Col';
-import DatePicker, { setDefaultLocale } from 'react-datepicker';
+import DatePicker from 'react-datepicker';
 import { registerLocale } from 'react-datepicker';
 import es from 'date-fns/locale/es';
 registerLocale('es', es);
@@ -23,7 +23,6 @@ const navigate = useNavigate();
 const [welcome, setWelcome] = useState('');
 const credencialesRdx = useSelector(userData);
 const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(),0),10))
-const [language, setLanguage] = useState('es');
 
 const [match, setMatch] = useState({
   track_id: '',
@@ -38,7 +37,7 @@ const inputHandler = (e) =>{
 };
 
 const createMatch = ()=> {
-  match.date = startDate
+  match.date = startDate;
   newMatch(match, credencialesRdx.credentials.token)
   .then((resultado)=>{
     setMatch(resultado.data);
