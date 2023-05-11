@@ -2,6 +2,7 @@ import React from "react";
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import NavDropdown from 'react-bootstrap/NavDropdown';
 import { Link } from "react-router-dom";
 import './NavBar.css';
 import { useDispatch, useSelector } from "react-redux";
@@ -33,20 +34,23 @@ export const NavBar = () => {
               </>
             ): credencialesRdx.credentials.usuario.roleId === 2 ?(
               <>
-            <Nav.Link as={Link} to={'/bookings'} >Reservas</Nav.Link>
             <Nav.Link as={Link} to={'/coaches'} >Entrenadores</Nav.Link>
             <Nav.Link as={Link} to={'/tracks'} >Pistas</Nav.Link>
-            <Nav.Link as={Link} to={'/matches'} >Partidas</Nav.Link>
-            <Nav.Link as={Link} to={'/profile'} >Usuario</Nav.Link>
+            <NavDropdown title={credencialesRdx.credentials.usuario.name} id="dropdown" menuVariant="dark">
+            <NavDropdown.Item as={Link} to={'/profile'}>Perfil</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to={'/matches'}>Jugar Partida</NavDropdown.Item>
+            <NavDropdown.Item as={Link} to={'/bookings'}>Reservas</NavDropdown.Item>
+            </NavDropdown>
             <Nav.Link as={Link} to={'/'} onClick={()=>logout()}>Logout</Nav.Link>
               </>
             ): credencialesRdx.credentials.usuario.roleId === 1 ? (
               <>
             <Nav.Link as={Link} to={'/coaches'} >Entrenadores</Nav.Link>
-            <Nav.Link as={Link} to={'/users'} >Usuarios</Nav.Link>
             <Nav.Link as={Link} to={'/tracks'} >Pistas</Nav.Link>
-            <Nav.Link as={Link} to={'/matches'} >Partidas</Nav.Link>
-            <Nav.Link as={Link} to={'/'} >Admin</Nav.Link>
+            <NavDropdown title='Admin' id='dropdownAdmin' menuVariant="dark">
+              <NavDropdown.Item as={Link} to={'/users'}>Usuarios</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={'/matches'}>Partidas</NavDropdown.Item>
+            </NavDropdown>
             <Nav.Link as={Link} to={'/'} onClick={()=>logout()}>Logout</Nav.Link>
               </>
             ):(

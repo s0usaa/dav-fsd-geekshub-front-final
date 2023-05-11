@@ -82,12 +82,5 @@ export const Detail = () => {
         </Col>
       </Row>
     </Container>
-    // <>
-    // <h2>Detail</h2>
-    // <div>{detailRdx.choosenObject.name}</div>
-    // <div>{detailRdx.choosenObject.surname}</div>
-    // <div>{detailRdx.choosenObject.phone}</div>
-    // <div>{detailRdx.choosenObject.email}</div>
-    // </>
   )
 }
