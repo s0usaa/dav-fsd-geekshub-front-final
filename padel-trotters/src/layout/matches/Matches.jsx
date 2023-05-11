@@ -54,14 +54,14 @@ console.log(match);
   return (
     <Container>
     {welcome !== "" ? (
-      <Row className="newAppointmentDesign d-flex justify-content-center align-items-center">
+      <Row className="matchesDesign d-flex justify-content-center align-items-center">
         <Col xs={10} sm={6} className="loginCol">
           <h1>{welcome}</h1>
         </Col>
       </Row>
     ) : (
-    <Row className="newAppointmentDesign d-flex align-items-center justify-content-center">
-      <Col xs={10} lg={6} sm={12} className="newAppointmentDiv">
+    <Row className="matchesDesign d-flex align-items-center justify-content-center">
+      <Col xs={10} lg={6} sm={12} className="matchesDiv">
       <h1 className="mb-4 text-center">Reserva tu Partida</h1>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicDoctor">
