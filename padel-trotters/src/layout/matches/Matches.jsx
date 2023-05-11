@@ -50,7 +50,7 @@ const createMatch = ()=> {
     setMatch(error.message);
   });
 };
-console.log(match);
+
   return (
     <Container>
     {welcome !== "" ? (

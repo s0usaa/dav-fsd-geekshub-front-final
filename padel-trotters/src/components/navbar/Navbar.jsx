@@ -19,7 +19,7 @@ export const NavBar = () => {
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top" >
+    <Navbar collapseOnSelect expand="lg" bg="primary" variant="dark" fixed="top" >
       <Container>
         <Navbar.Brand as={Link} to={'/'}>Padel Trotters</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -36,7 +36,7 @@ export const NavBar = () => {
               <>
             <Nav.Link as={Link} to={'/coaches'} >Entrenadores</Nav.Link>
             <Nav.Link as={Link} to={'/tracks'} >Pistas</Nav.Link>
-            <NavDropdown title={credencialesRdx.credentials.usuario.name} id="dropdown" menuVariant="dark">
+            <NavDropdown title={credencialesRdx.credentials.usuario.name} id="dropdown" variant="primary">
             <NavDropdown.Item as={Link} to={'/profile'}>Perfil</NavDropdown.Item>
             <NavDropdown.Item as={Link} to={'/matches'}>Jugar Partida</NavDropdown.Item>
             <NavDropdown.Item as={Link} to={'/bookings'}>Reservas</NavDropdown.Item>
@@ -47,16 +47,14 @@ export const NavBar = () => {
               <>
             <Nav.Link as={Link} to={'/coaches'} >Entrenadores</Nav.Link>
             <Nav.Link as={Link} to={'/tracks'} >Pistas</Nav.Link>
-            <NavDropdown title='Admin' id='dropdownAdmin' menuVariant="dark">
+            <NavDropdown title='Admin' id='dropdownAdmin' variant="secondary">
               <NavDropdown.Item as={Link} to={'/users'}>Usuarios</NavDropdown.Item>
-              <NavDropdown.Item as={Link} to={'/matches'}>Partidas</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to={'/'} onClick={()=>logout()}>Logout</Nav.Link>
               </>
             ):(
               <Nav.Link as={Link} to={'/'} onClick={()=>logout()}>Logout</Nav.Link>
             )}
-              <Nav.Link as={Link} to={'/contact'} >Contacto</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

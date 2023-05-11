@@ -87,11 +87,50 @@ export const deleteMatch = async(params, token)=>{
 
 //Modificar una partida
 export const updateMatches = async(params, body, token)=>{
-    console.log(params, body);
     let config = {
         headers: {
             Authorization: `Bearer ${token}`
         },
     };
     return await axios.put(`${root}user/match/${params}`, body, config)
+}
+
+//Borrar un entrenador como Admin
+export const deleteCoach = async(params, token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.delete(`${root}admin/coaches/${params}`, config)
+}
+
+//Modificar un entrenador como Admin
+export const updateCoaches = async(params ,body, token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.put(`${root}admin/coaches/${params}`, body, config)
+}
+
+//Borrar una pista como Admin
+export const deleteTrack = async(params, token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.delete(`${root}admin/tracks/${params}`, config)
+}
+
+//Modificar una pista como Admin
+export const updateTrack= async(params ,body, token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.put(`${root}admin/tracks/${params}`, body, config)
 }

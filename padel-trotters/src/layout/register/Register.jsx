@@ -123,7 +123,7 @@ export const Register = () => {
                 />
                 <label htmlFor="floatingInputCustom">Nombre*</label>
               </Form.Floating>
-              <Form.Text className="text-danger">
+              <Form.Text className="text-dark">
                 {credencialesError.nameError}
               </Form.Text>
             </Form.Group>
@@ -143,7 +143,7 @@ export const Register = () => {
                 />
                 <label htmlFor="floatingInputCustom">Apellido*</label>
               </Form.Floating>
-              <Form.Text className="text-danger">
+              <Form.Text className="text-dark">
                 {credencialesError.surnameError}
               </Form.Text>
             </Form.Group>
@@ -165,7 +165,7 @@ export const Register = () => {
                   Nivel (entre 1 y 5)*
                 </label>
               </Form.Floating>
-              <Form.Text className="text-danger">
+              <Form.Text className="text-dark">
                 {credencialesError.levelError}
               </Form.Text>
             </Form.Group>
@@ -185,7 +185,7 @@ export const Register = () => {
                 />
                 <label htmlFor="floatingInputCustom">Telefono*</label>
               </Form.Floating>
-              <Form.Text className="text-danger">
+              <Form.Text className="text-dark">
                 {credencialesError.phoneError}
               </Form.Text>
             </Form.Group>
@@ -205,7 +205,7 @@ export const Register = () => {
                 />
                 <label htmlFor="floatingInputCustom">Email*</label>
               </Form.Floating>
-              <Form.Text className="text-danger">
+              <Form.Text className="text-dark">
                 {credencialesError.emailError}
               </Form.Text>
             </Form.Group>
@@ -225,7 +225,7 @@ export const Register = () => {
                 />
                 <label htmlFor="floatingInputCustom">Password*</label>
               </Form.Floating>
-              <Form.Text className="text-danger">
+              <Form.Text className="text-dark">
                 {credencialesError.passwordError}
               </Form.Text>
             </Form.Group>

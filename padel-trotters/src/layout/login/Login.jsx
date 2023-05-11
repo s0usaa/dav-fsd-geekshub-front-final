@@ -108,8 +108,6 @@ export const Login = () => {
       .catch((error) => console.log(error));
   };
 
-  console.log(credentialsRdx);
-
   return (
     <Container fluid>
       {welcome !== "" ? (
@@ -138,7 +136,7 @@ export const Login = () => {
                 />
                 <label htmlFor="floatingInputCustom">Email*</label>
               </Form.Floating>
-              <Form.Text className="text-danger">
+              <Form.Text className="text-dark">
                 {credencialesError.emailError}
               </Form.Text>
             </Form.Group>
@@ -157,7 +155,7 @@ export const Login = () => {
                 />
                 <label htmlFor="floatingInputCustom">Password*</label>
               </Form.Floating>
-              <Form.Text className="text-danger">
+              <Form.Text className="text-dark">
                 {credencialesError.passwordError}
               </Form.Text>
             </Form.Group>

@@ -11,7 +11,6 @@ import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
 import Form from "react-bootstrap/Form";
 import dayjs from "dayjs";
-import { useNavigate } from "react-router-dom";
 import "./Bookings.css";
 import Modal from "react-bootstrap/Modal";
 import { InputText } from "../../components/inputtext/InputText";
@@ -65,7 +64,7 @@ export const Bookings = () => {
     updateMatches( partidasRedux.choosenObject.id ,upMatch, credencialesRdx.credentials.token)
       .then((resultado) => {
         setUpMatch(resultado.data);
-        setWelcome('Hola q ase')
+        setWelcome('Partida actualizada correctamente')
         setTimeout(() => {
           handleClose();
           setWelcome('');
@@ -179,16 +178,6 @@ export const Bookings = () => {
                       <Modal.Body>
                         <Form>
                           <Form.Group className="mb-3" controlId="input1">
-                          {/* <Form.Label>Numero reserva</Form.Label>
-                            <InputText
-                              className={""}
-                              type={"text"}
-                              name={"id"}
-                              placeholder={"Selecciona el numero de reserva"}
-                              maxLength={3}
-                              changeFunction={inputHandler}
-                              blurFunction={(e) => e}
-                            /> */}
                             <Form.Label>Numero de pista</Form.Label>
                             <InputText
                               className={""}
