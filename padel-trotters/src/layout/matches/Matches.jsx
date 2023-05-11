@@ -62,7 +62,7 @@ console.log(match);
     ) : (
     <Row className="newAppointmentDesign d-flex align-items-center justify-content-center">
       <Col xs={10} lg={6} sm={12} className="newAppointmentDiv">
-      <h1 className="mb-4">Reserva tu Partida</h1>
+      <h1 className="mb-4 text-center">Reserva tu Partida</h1>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicDoctor">
             <Form.Label>Pistas</Form.Label>

@@ -96,9 +96,6 @@ export const Bookings = () => {
 
   const partidasRedux = useSelector(detailData);
 
-  console.log(partidasRedux);
-
-
   return (
     <Container fluid>
       {welcome !== "" ? (
@@ -115,7 +112,7 @@ export const Bookings = () => {
               return (
                 <Form key={partidas.id}>
                   <div className="appointmentDiv">
-                    <Form.Group as={Row} controlId="formPlaintextPassword">
+                    <Form.Group as={Row} controlId="formPlaintextPassword" className="mb-2">
                       <Form.Label column sm="2" className="mx-2">
                         Pista
                       </Form.Label>
