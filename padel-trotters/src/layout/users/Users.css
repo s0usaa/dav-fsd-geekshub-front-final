@@ -1,0 +1,10 @@
+.usersDesign {
+    height: 100vh;
+}
+
+.usersDiv{
+    background-color: rgb(128, 247, 180);
+    border-radius: 1em;
+    box-shadow: 0.3em 0.5em 0.3em 0.1em grey;
+    cursor: pointer;
+}

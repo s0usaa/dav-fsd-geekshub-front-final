@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { validate } from '../../helpers/useful';
-import { register } from '../../services/apiCalls';
-import Container from 'react-bootstrap/esm/Container';
-import Row from 'react-bootstrap/esm/Row';
-import Col from 'react-bootstrap/esm/Col';
-import Form from 'react-bootstrap/Form';
-import { InputText } from '../../components/inputtext/InputText';
-import './Register.css'
+import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { validate } from "../../helpers/useful";
+import { register } from "../../services/apiCalls";
+import Container from "react-bootstrap/esm/Container";
+import Row from "react-bootstrap/esm/Row";
+import Col from "react-bootstrap/esm/Col";
+import Form from "react-bootstrap/Form";
+import { InputText } from "../../components/inputtext/InputText";
+import "./Register.css";
 
 export const Register = () => {
   const navigate = useNavigate();
@@ -49,7 +49,6 @@ export const Register = () => {
   };
 
   useEffect(() => {
-    // console.log(valiCredenciales);
     for (let error in credencialesError) {
       if (credencialesError[error] !== "") {
         setRegisterAct(false);
@@ -74,11 +73,7 @@ export const Register = () => {
 
   const checkError = (e) => {
     let error = "";
-    let checked = validate(
-      e.target.name,
-      e.target.value,
-      e.target.required
-      );
+    let checked = validate(e.target.name, e.target.value, e.target.required);
     error = checked.message;
 
     setValiCredenciales((prevState) => ({
@@ -92,14 +87,14 @@ export const Register = () => {
     }));
   };
 
-  const newUser = ()=>{
+  const newUser = () => {
     register(credenciales)
-    .then(()=>{
-      setTimeout(()=>{
-        navigate('/login');
-      },1500);
-    })
-    .catch((error)=> console.log(error));
+      .then(() => {
+        setTimeout(() => {
+          navigate("/login");
+        }, 1500);
+      })
+      .catch((error) => console.log(error));
   };
 
   return (
@@ -166,7 +161,9 @@ export const Register = () => {
                   changeFunction={(e) => inputHandler(e)}
                   blurFunction={(e) => checkError(e)}
                 />
-                <label htmlFor="floatingInputCustom">Nivel (entre 1 y 5)*</label>
+                <label htmlFor="floatingInputCustom">
+                  Nivel (entre 1 y 5)*
+                </label>
               </Form.Floating>
               <Form.Text className="text-danger">
                 {credencialesError.levelError}
@@ -247,5 +244,5 @@ export const Register = () => {
         </Col>
       </Row>
     </Container>
-  )
-}
+  );
+};

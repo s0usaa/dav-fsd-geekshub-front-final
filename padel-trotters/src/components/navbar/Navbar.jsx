@@ -18,7 +18,7 @@ export const NavBar = () => {
   }
 
   return (
-    <Navbar collapseOnSelect expand="lg" bg="light" variant="light" fixed="top" >
+    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark" fixed="top" >
       <Container>
         <Navbar.Brand as={Link} to={'/'}>Padel Trotters</Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
