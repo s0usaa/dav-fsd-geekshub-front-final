@@ -41,6 +41,7 @@ export const Coaches = () => {
 
   const entrenadoresRedux = useSelector(detailData);
   console.log(entrenadoresRedux);
+  
   const [upCoach, setUpCoach] = useState({
     especialidad: "",
   });
