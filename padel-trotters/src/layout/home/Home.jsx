@@ -15,9 +15,9 @@ import Card from 'react-bootstrap/Card';
 export const Home = () => {
   return (
    <Container fluid>
-    <Row>
-      <Col className='mb-3'>
-      <Carousel slide={false} className='mb-3'>
+    <Row className='mt-5'>
+      <Col>
+      <Carousel slide={false}>
       <Carousel.Item>
         <img
           className="d-block w-100"
@@ -76,7 +76,7 @@ export const Home = () => {
         <Card.Text>Last updated 3 mins ago</Card.Text>
       </Card.ImgOverlay>
     </Card>
-    <Card className="bg-dark text-white">
+    <Card className="bg-dark text-white mb-3">
       <Card.Img src={IMGHome6} alt="Card image" />
       <Card.ImgOverlay>
         <Card.Title>Card title</Card.Title>

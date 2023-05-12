@@ -49,6 +49,8 @@ export const NavBar = () => {
             <Nav.Link as={Link} to={'/tracks'} >Pistas</Nav.Link>
             <NavDropdown title='Admin' id='dropdownAdmin' variant="secondary">
               <NavDropdown.Item as={Link} to={'/users'}>Usuarios</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={'/newtrack'}>Crear una pista</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={'/newcoach'}>Crear un entrenador</NavDropdown.Item>
             </NavDropdown>
             <Nav.Link as={Link} to={'/'} onClick={()=>logout()}>Logout</Nav.Link>
               </>

@@ -11,6 +11,8 @@ import { Users } from '../users/Users';
 import { Profile } from '../profile/Profile';
 import { Detail } from '../detail/Detail';
 import { Bookings } from '../bookings/bookings';
+import { CreateTracks } from '../createtracks/CreateTracks';
+import { CreateCoaches } from '../createcoaches/CreateCoaches';
 
 export const Body = () => {
   return (
@@ -28,6 +30,8 @@ export const Body = () => {
         <Route path='/profile' element={<Profile/>}/>
         <Route path='/detail' element={<Detail/>}/>
         <Route path='/bookings' element={<Bookings/>}/>
+        <Route path='/newtrack' element={<CreateTracks/>}/>
+        <Route path='/newcoach' element={<CreateCoaches/>}/>
     </Routes>
     </>
   )

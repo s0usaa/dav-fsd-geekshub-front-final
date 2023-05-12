@@ -134,3 +134,13 @@ export const updateTrack= async(params ,body, token)=>{
     };
     return await axios.put(`${root}admin/tracks/${params}`, body, config)
 }
+
+//Crear una pista como Admin
+export const newMTrack = async(body, token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.post(`${root}admin/tracks`, body, config);
+}
