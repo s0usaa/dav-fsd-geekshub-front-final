@@ -136,11 +136,21 @@ export const updateTrack= async(params ,body, token)=>{
 }
 
 //Crear una pista como Admin
-export const newMTrack = async(body, token)=>{
+export const newTrack = async(body, token)=>{
     let config = {
         headers: {
             Authorization: `Bearer ${token}`
         },
     };
     return await axios.post(`${root}admin/tracks`, body, config);
+}
+
+//Crear un entrenador como Admin
+export const newCoach = async(body, token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.post(`${root}admin/coaches`, body, config);
 }

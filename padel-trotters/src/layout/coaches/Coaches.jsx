@@ -121,7 +121,7 @@ export const Coaches = () => {
                       className="loginSendDeac loginSendAct m-3"
                       onClick={() => selected(entrenadores)}
                     >
-                      Modificar reserva
+                      Mod. Entrenador
                     </div>
                     <Modal show={show} onHide={handleClose}>
                       <Modal.Header closeButton>
