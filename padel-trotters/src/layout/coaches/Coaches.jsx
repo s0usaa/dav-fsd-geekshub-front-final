@@ -104,11 +104,6 @@ export const Coaches = () => {
                       <Card.Title>
                         Entrenador de {entrenadores.especialidad}
                       </Card.Title>
-                      <Card.Text>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Impedit reiciendis recusandae esse quas eius quo
-                        perferendis eligendi, quam dolorem aspernatur.
-                      </Card.Text>
                     </Card.ImgOverlay>
                   </Card>
                   <div className="d-flex justify-content-center">
@@ -126,7 +121,7 @@ export const Coaches = () => {
                     </div>
                     <Modal show={show} onHide={handleClose} backdrop='static'>
                       <Modal.Header closeButton>
-                        <Modal.Title>Modificar Reserva</Modal.Title>
+                        <Modal.Title>Modificar Entrenador</Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
                         <Form>

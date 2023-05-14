@@ -36,7 +36,7 @@ export const Home = () => {
               <Col xs={4} lg={4}>
                 <Card.Img src={IMGHome5}/>
               </Col>
-              <Col xs={8} lg={8} className="text-center">
+              <Col xs={8} lg={8} className="text-center justify-content-center d-flex flex-column">
                 <h1>Clases particulares</h1>
                 <h4>Aprende de los mejores profesionales para pulir tu técnica, tanto en ataque como en defensa.</h4>
               </Col>
@@ -44,7 +44,7 @@ export const Home = () => {
           </Card>
           <Card>
             <Row className="g-0 homeImg-1">
-              <Col xs={8} lg={8} className="text-center">
+              <Col xs={8} lg={8} className="text-center justify-content-center d-flex flex-column">
                 <h1>Nuevas instalaciones</h1>
                 <h4>Ven a jugar en nuestras pistas cubiertas y al aire libre.</h4>
               </Col>

@@ -105,7 +105,7 @@ export const Bookings = () => {
       ) : (
         <Row className="appointmentDesign align-items-center d-flex justify-content-center mt-5">
           <Col xs={12} sm={8} lg={6}>
-            <h3 className="text-center mt-3">Mis Reservas</h3>
+            <h3 className="text-center mt-3 text-white">Mis Reservas</h3>
             {userMatch.map((partidas) => {
               return (
                 <Form key={partidas.id}>
@@ -159,13 +159,13 @@ export const Bookings = () => {
                   </div>
                   <div className="d-flex">
                     <div
-                      className="loginSendDeac loginSendAct m-3"
+                      className="modSendDeac modSendAct m-3"
                       onClick={() => delMatch(partidas)}
                     >
                       Eliminar reserva
                     </div>
                     <div
-                      className="loginSendDeac loginSendAct m-3"
+                      className="modSendDeac modSendAct m-3"
                       onClick={()=>selected(partidas)}
                     >
                       Modificar reserva

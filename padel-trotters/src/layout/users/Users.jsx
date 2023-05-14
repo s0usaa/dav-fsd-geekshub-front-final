@@ -40,7 +40,7 @@ export const Users = () => {
       <Row className="usersDesign align-items-center d-flex justify-content-center text-center">
         {users.length > 0 ? (
           <Col sm={4} lg={2} className="mt-4">
-            <h2 className="mb-4">LISTA DE USUARIOS</h2>
+            <h2 className="mb-4 text-white">LISTA DE USUARIOS</h2>
             {users.map((persona) => {
               return (
                 <ListGroup className="usersDiv" key={persona.id}>

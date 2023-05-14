@@ -10,9 +10,9 @@ import { Matches } from '../matches/Matches';
 import { Users } from '../users/Users';
 import { Profile } from '../profile/Profile';
 import { Detail } from '../detail/Detail';
-import { Bookings } from '../bookings/bookings';
 import { CreateTracks } from '../createtracks/CreateTracks';
 import { CreateCoaches } from '../createcoaches/CreateCoaches';
+import { Bookings } from '../bookings/Bookings';
 
 export const Body = () => {
   return (

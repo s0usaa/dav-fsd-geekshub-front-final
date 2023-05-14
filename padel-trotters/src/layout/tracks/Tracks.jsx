@@ -101,11 +101,6 @@ export const Tracks = () => {
                       <Card.Title>
                         Pista numero: {pistas.track_number}
                       </Card.Title>
-                      <Card.Text>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Impedit reiciendis recusandae esse quas eius quo
-                        perferendis eligendi, quam dolorem aspernatur.
-                      </Card.Text>
                       <Card.Text>{pistas.type}</Card.Text>
                     </Card.ImgOverlay>
                   </Card>
@@ -124,7 +119,7 @@ export const Tracks = () => {
                     </div>
                     <Modal show={show} onHide={handleClose} backdrop='static'>
                       <Modal.Header closeButton>
-                        <Modal.Title>Modificar Reserva</Modal.Title>
+                        <Modal.Title>Modificar Pista</Modal.Title>
                       </Modal.Header>
                       <Modal.Body>
                         <Form>
