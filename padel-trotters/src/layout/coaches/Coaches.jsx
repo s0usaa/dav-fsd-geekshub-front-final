@@ -162,11 +162,6 @@ export const Coaches = () => {
                       <Card.Title>
                         Entrenador de {entrenadores.especialidad}
                       </Card.Title>
-                      <Card.Text>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Impedit reiciendis recusandae esse quas eius quo
-                        perferendis eligendi, quam dolorem aspernatur.
-                      </Card.Text>
                     </Card.ImgOverlay>
                   </Card>
                 </div>

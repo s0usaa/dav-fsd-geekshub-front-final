@@ -91,7 +91,7 @@ export const Register = () => {
   const newUser = () => {
     register(credenciales)
       .then(() => {
-        setWelcome("Registro completado con exito!");
+        setWelcome(`Registro completado con exito ${credenciales.name}!`);
         setTimeout(() => {
           navigate("/login");
         }, 2500);
@@ -188,7 +188,7 @@ export const Register = () => {
                     name={"phone"}
                     placeholder={"Introduce tu telefono"}
                     required={true}
-                    maxLenght={10}
+                    maxLenght={9}
                     changeFunction={(e) => inputHandler(e)}
                     blurFunction={(e) => checkError(e)}
                   />
