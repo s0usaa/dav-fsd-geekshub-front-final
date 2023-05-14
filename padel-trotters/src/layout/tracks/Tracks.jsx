@@ -12,6 +12,7 @@ import Form from "react-bootstrap/Form";
 import "./Tracks.css";
 import Card from "react-bootstrap/Card";
 import IMGTrack1 from "../../img/mujer-jugando-al-padel-tiro-completo.jpg";
+import IMGTrack2 from "../../img/deportista-jugando-al-juego-padel.jpg";
 import { addChoosen, detailData } from "../../services/detailSlice";
 import { InputText } from "../../components/inputtext/InputText";
 
@@ -95,7 +96,7 @@ export const Tracks = () => {
               return (
                 <div key={pistas.id}>
                   <Card className="bg-dark text-white m-5">
-                    <Card.Img src={IMGTrack1} alt="Pistas" />
+                    <Card.Img src={pistas.type === 'Cubierta' ? IMGTrack1 : IMGTrack2} alt="Pistas" />
                     <Card.ImgOverlay>
                       <Card.Title>
                         Pista numero: {pistas.track_number}

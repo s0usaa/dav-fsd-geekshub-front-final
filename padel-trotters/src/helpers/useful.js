@@ -98,7 +98,7 @@ export const validate = (name, data, required) => {
       }
       if (data.length > 3) {
         return {
-          message: "El campo no puede tener mas de 9 caracteres",
+          message: "El campo no puede tener mas de 3 caracteres",
           validated: false,
         };
       }

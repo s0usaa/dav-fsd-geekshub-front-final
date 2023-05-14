@@ -126,12 +126,5 @@ export const Profile = () => {
         </Col>
       </Row>
     </Container>
-    // <>
-    // <div>{userProfile.name}</div>
-    // <div>{userProfile.surname}</div>
-    // <div>{userProfile.level}</div>
-    // <div>{userProfile.phone}</div>
-    // <div>{userProfile.email}</div>
-    // </>
   )
 }

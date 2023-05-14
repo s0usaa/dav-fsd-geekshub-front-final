@@ -13,7 +13,8 @@ import Col from "react-bootstrap/esm/Col";
 import Card from "react-bootstrap/Card";
 import Modal from "react-bootstrap/Modal";
 import Form from "react-bootstrap/Form";
-import IMGCoach from "../../img/gente-jugando-al-padel-dentro.jpg";
+import IMGCoach1 from "../../img/gente-jugando-al-padel-dentro.jpg";
+import IMGCoach2 from "../../img/persona-preparandose-jugar-al-padel-dentro (1).jpg";
 import { addChoosen, detailData } from "../../services/detailSlice";
 import { InputText } from "../../components/inputtext/InputText";
 
@@ -40,7 +41,7 @@ export const Coaches = () => {
   };
 
   const entrenadoresRedux = useSelector(detailData);
-  console.log(entrenadoresRedux);
+
   
   const [upCoach, setUpCoach] = useState({
     especialidad: "",
@@ -98,7 +99,7 @@ export const Coaches = () => {
               return (
                 <div key={entrenadores.id}>
                   <Card className="bg-dark text-white m-5">
-                    <Card.Img src={IMGCoach} alt="Entrenadores" />
+                    <Card.Img src={entrenadores.especialidad === 'Ataque' ? IMGCoach1 : IMGCoach2} alt="Entrenadores" />
                     <Card.ImgOverlay>
                       <Card.Title>
                         Entrenador de {entrenadores.especialidad}
