@@ -111,18 +111,18 @@ export const Tracks = () => {
                   </Card>
                   <div className="d-flex justify-content-center">
                     <div
-                      className="loginSendDeac loginSendAct m-3"
+                      className="modSendDeac modSendAct m-3"
                       onClick={() => delTrack(pistas)}
                     >
                       Eliminar Pista
                     </div>
                     <div
-                      className="loginSendDeac loginSendAct m-3"
+                      className="modSendDeac modSendAct m-3"
                       onClick={() => selected(pistas)}
                     >
                       Modificar pista
                     </div>
-                    <Modal show={show} onHide={handleClose}>
+                    <Modal show={show} onHide={handleClose} backdrop='static'>
                       <Modal.Header closeButton>
                         <Modal.Title>Modificar Reserva</Modal.Title>
                       </Modal.Header>
@@ -140,7 +140,7 @@ export const Tracks = () => {
                             />
                           </Form.Group>
                           <div
-                            className="loginSendDeac loginSendAct m-3"
+                            className="modSendDeac modSendAct m-3"
                             onClick={updateTracks}
                           >
                             Aceptar
@@ -160,16 +160,11 @@ export const Tracks = () => {
               return (
                 <div key={pistas.id}>
                   <Card className="bg-dark text-white m-5">
-                    <Card.Img src={IMGTrack1} alt="Pistas" />
+                    <Card.Img src={pistas.type === 'Cubierta' ? IMGTrack1 : IMGTrack2} alt="Pistas" />
                     <Card.ImgOverlay>
                       <Card.Title>
                         Pista numero: {pistas.track_number}
                       </Card.Title>
-                      <Card.Text>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                        Impedit reiciendis recusandae esse quas eius quo
-                        perferendis eligendi, quam dolorem aspernatur.
-                      </Card.Text>
                       <Card.Text>{pistas.type}</Card.Text>
                     </Card.ImgOverlay>
                   </Card>

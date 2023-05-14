@@ -113,18 +113,18 @@ export const Coaches = () => {
                   </Card>
                   <div className="d-flex justify-content-center">
                     <div
-                      className="loginSendDeac loginSendAct m-3"
+                      className="modSendDeac modSendAct m-3"
                       onClick={() => delCoach(entrenadores)}
                     >
                       Eliminar entrenador
                     </div>
                     <div
-                      className="loginSendDeac loginSendAct m-3"
+                      className="modSendDeac modSendAct m-3"
                       onClick={() => selected(entrenadores)}
                     >
                       Mod. Entrenador
                     </div>
-                    <Modal show={show} onHide={handleClose}>
+                    <Modal show={show} onHide={handleClose} backdrop='static'>
                       <Modal.Header closeButton>
                         <Modal.Title>Modificar Reserva</Modal.Title>
                       </Modal.Header>
@@ -162,7 +162,7 @@ export const Coaches = () => {
               return (
                 <div key={entrenadores.id}>
                   <Card className="bg-dark text-white m-5">
-                    <Card.Img src={IMGCoach} alt="Entrenadores" />
+                    <Card.Img src={entrenadores.especialidad === 'Ataque' ? IMGCoach1 : IMGCoach2} alt="Entrenadores" />
                     <Card.ImgOverlay>
                       <Card.Title>
                         Entrenador de {entrenadores.especialidad}

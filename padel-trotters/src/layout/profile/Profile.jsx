@@ -239,7 +239,7 @@ export const Profile = () => {
                 Modificar perfil
               </div>
             </Form>
-            <Modal show={show} onHide={handleClose}>
+            <Modal show={show} onHide={handleClose} backdrop='static'>
               <Modal.Header closeButton>
                 <Modal.Title>Modificar Perfil</Modal.Title>
               </Modal.Header>

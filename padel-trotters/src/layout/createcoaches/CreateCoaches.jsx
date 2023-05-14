@@ -58,7 +58,7 @@ export const CreateCoaches = () => {
                   className={""}
                   type={"text"}
                   name={"especialidad"}
-                  placeholder={"Añade el numero de pista nuevo"}
+                  placeholder={"Añade la especialidad del entrenador"}
                   maxLength={20}
                   changeFunction={inputHandler}
                   blurFunction={(e) => e}

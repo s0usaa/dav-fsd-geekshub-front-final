@@ -28,3 +28,24 @@
     transition: 1s;
     background-color: darkblue;
 }
+
+.modSendDeac {
+    height: 2em;
+    width: 9em;
+    background-color: black;
+    border-radius: 0.2em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modSendAct {
+    cursor: pointer;
+    background-color: red;
+}
+
+.modSendAct:hover {
+    transition: 1s;
+    background-color: darkred;
+}

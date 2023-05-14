@@ -5,4 +5,8 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif ;
+    background-image: url(../img/bandera-estadounidense.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
