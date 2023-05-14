@@ -65,26 +65,33 @@ El proyecto es una web para poder realizar clases de padel con un entrenador ya 
 
 ## Vistas
 - Home
-<img width="363" alt="Captura de pantalla 2023-03-29 a las 1 10 07" src="https://user-images.githubusercontent.com/120210515/228387059-ff0aed88-bc3e-4821-840f-c53107549c69.png">
+<img width="1440" alt="Captura de pantalla 2023-05-14 a las 21 41 59" src="https://github.com/s0usaa/dav-fsd-geekshub-front-final/assets/120210515/5edf140a-df7c-40fe-8f35-6e797da0e8bf">
+
 
 - Perfil de Usuario
-<img width="362" alt="Captura de pantalla 2023-03-29 a las 1 14 49" src="https://user-images.githubusercontent.com/120210515/228387657-89f5767b-70e3-4240-9fdb-deda25f8a650.png">
+<img width="1440" alt="Captura de pantalla 2023-05-14 a las 21 59 43" src="https://github.com/s0usaa/dav-fsd-geekshub-front-final/assets/120210515/00ce34bc-7536-4cea-9c26-286b5e107776">
+
 
 - Crear una partida
-<img width="362" alt="Captura de pantalla 2023-03-29 a las 1 15 31" src="https://user-images.githubusercontent.com/120210515/228387730-0e875a9e-ddec-4acd-951f-012e3e114a5e.png">
+<img width="1440" alt="Captura de pantalla 2023-05-14 a las 22 00 33" src="https://github.com/s0usaa/dav-fsd-geekshub-front-final/assets/120210515/abeb6dbb-ae53-43f6-a89c-cb3d213b6b52">
+
 
 - Ver tus reservas
-<img width="366" alt="Captura de pantalla 2023-03-29 a las 1 17 49" src="https://user-images.githubusercontent.com/120210515/228388008-bf1e2e3d-68aa-4102-a06c-61a3e3818339.png">
+<img width="1440" alt="Captura de pantalla 2023-05-14 a las 22 55 36" src="https://github.com/s0usaa/dav-fsd-geekshub-front-final/assets/120210515/445193d8-e9fe-453c-86ec-09542c38a86f">
 
+- Modificar tus reservas
+<img width="982" alt="Captura de pantalla 2023-05-14 a las 22 09 51" src="https://github.com/s0usaa/dav-fsd-geekshub-front-final/assets/120210515/59dda599-ff62-47c7-8308-7016301994db">
 
 - Ver Usuarios como Admin
-<img width="363" alt="Captura de pantalla 2023-03-29 a las 1 16 47" src="https://user-images.githubusercontent.com/120210515/228387892-7bbe2bd3-c402-4911-bd7b-543634fbeb8f.png">
+<img width="1440" alt="Captura de pantalla 2023-05-14 a las 23 00 42" src="https://github.com/s0usaa/dav-fsd-geekshub-front-final/assets/120210515/0a262188-38fc-470f-9d01-06e3107fa06a">
 
 - Eliminar y modificar pistas como Admin
-<img width="363" alt="Captura de pantalla 2023-03-29 a las 1 16 47" src="https://user-images.githubusercontent.com/120210515/228387892-7bbe2bd3-c402-4911-bd7b-543634fbeb8f.png">
+<img width="1437" alt="Captura de pantalla 2023-05-14 a las 22 43 29" src="https://github.com/s0usaa/dav-fsd-geekshub-front-final/assets/120210515/cdbaf59e-b17a-4602-b37f-8887dd3bda81">
+
 
 - Eliminar y modificar entrenadores como Admin
-<img width="363" alt="Captura de pantalla 2023-03-29 a las 1 16 47" src="https://user-images.githubusercontent.com/120210515/228387892-7bbe2bd3-c402-4911-bd7b-543634fbeb8f.png">
+<img width="700" alt="Captura de pantalla 2023-05-14 a las 22 46 28" src="https://github.com/s0usaa/dav-fsd-geekshub-front-final/assets/120210515/ee275273-a177-4af1-b04c-df336d4937d0">
+
 
 ## Futuras funcionalidades
 - Poder borrar usuarios como Admin
