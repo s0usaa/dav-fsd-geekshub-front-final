@@ -92,13 +92,33 @@ export const validate = (name, data, required) => {
       }
       if (!/[0-9]/.test(data)) {
         return {
-          message: "El nivel solo puede contener numeros",
+          message: "Solo se pueden poner numeros",
           validated: false,
         };
       }
       if (data.length > 3) {
         return {
           message: "El campo no puede tener mas de 3 caracteres",
+          validated: false,
+        };
+      }
+      return { message: "", validated: true };
+
+    case "coaches":
+    case "entrenadores":
+    case "coaches_id":
+      if (data === "" && required === true) {
+        return { message: "Rellena los campos vacios", validation: false };
+      }
+      if (!/[0-9]/.test(data)) {
+        return {
+          message: "Solo se pueden poner numeros",
+          validated: false,
+        };
+      }
+      if (data.length > 2) {
+        return {
+          message: "El campo no puede tener mas de 2 caracteres",
           validated: false,
         };
       }

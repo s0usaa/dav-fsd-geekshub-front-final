@@ -47,7 +47,6 @@ export const Bookings = () => {
   };
 
   const [upMatch, setUpMatch] = useState({
-    // id: partidasRedux.choosenObject.id, si lo hacemos por body
     track_id: '',
     date: '',
   });

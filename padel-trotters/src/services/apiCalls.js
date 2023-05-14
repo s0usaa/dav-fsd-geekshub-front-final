@@ -154,3 +154,13 @@ export const newCoach = async(body, token)=>{
     };
     return await axios.post(`${root}admin/coaches`, body, config);
 }
+
+//Modificar mi profile
+export const updateProfile = async(body, token)=>{
+    let config = {
+        headers: {
+            Authorization: `Bearer ${token}`
+        },
+    };
+    return await axios.put(`${root}user/profile`, body, config)
+}
