@@ -5,6 +5,7 @@ import {
   deleteMatch,
   updateMatches,
   viewMatches,
+  viewTracks,
 } from "../../services/apiCalls";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
@@ -31,6 +32,7 @@ export const Bookings = () => {
     setHours(setMinutes(new Date(), 0), 10)
   );
   const dispatch = useDispatch();
+  const [tracks, setTracks] = useState([]);
 
   const delMatch = (partidas) => {
     deleteMatch(partidas.id, credencialesRdx.credentials.token)
@@ -47,26 +49,30 @@ export const Bookings = () => {
   };
 
   const [upMatch, setUpMatch] = useState({
-    track_id: '',
-    date: '',
+    track_id: "",
+    date: "",
   });
 
-  const inputHandler = (e) => {
+  const selectTrack = (e) => {
     setUpMatch((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value,
+      track_id: e.target.value,
     }));
   };
 
   const updateMatch = () => {
     upMatch.date = startDate;
-    updateMatches( partidasRedux.choosenObject.id ,upMatch, credencialesRdx.credentials.token)
+    updateMatches(
+      partidasRedux.choosenObject.id,
+      upMatch,
+      credencialesRdx.credentials.token
+    )
       .then((resultado) => {
         setUpMatch(resultado.data);
-        setWelcome('Partida actualizada correctamente')
+        setWelcome("Partida actualizada correctamente");
         setTimeout(() => {
           handleClose();
-          setWelcome('');
+          setWelcome("");
           viewMatches(credencialesRdx.credentials.token)
             .then((respuesta) => {
               setUserMatch(respuesta.data.data);
@@ -87,8 +93,18 @@ export const Bookings = () => {
     }
   }, [userMatch]);
 
-  const selected = (matches)=>{
-    dispatch(addChoosen({choosenObject: matches}));
+  useEffect(() => {
+    if (tracks.length === 0) {
+      viewTracks(credencialesRdx.credentials.token)
+        .then((respuesta) => {
+          setTracks(respuesta.data.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [tracks]);
+
+  const selected = (matches) => {
+    dispatch(addChoosen({ choosenObject: matches }));
     handleShow();
   };
 
@@ -110,7 +126,11 @@ export const Bookings = () => {
               return (
                 <Form key={partidas.id}>
                   <div className="appointmentDiv">
-                    <Form.Group as={Row} controlId="formPlaintextPassword" className="mb-2">
+                    <Form.Group
+                      as={Row}
+                      controlId="formPlaintextPassword"
+                      className="mb-2"
+                    >
                       <Form.Label column sm="2" className="mx-2">
                         Pista
                       </Form.Label>
@@ -166,7 +186,7 @@ export const Bookings = () => {
                     </div>
                     <div
                       className="modSendDeac modSendAct m-3"
-                      onClick={()=>selected(partidas)}
+                      onClick={() => selected(partidas)}
                     >
                       Modificar reserva
                     </div>
@@ -177,16 +197,24 @@ export const Bookings = () => {
                       <Modal.Body>
                         <Form>
                           <Form.Group className="mb-3" controlId="input1">
-                            <Form.Label>Numero de pista</Form.Label>
-                            <InputText
-                              className={""}
-                              type={"text"}
-                              name={"track_id"}
-                              placeholder={"Selecciona pista de 1 a la 4"}
-                              maxLength={1}
-                              changeFunction={inputHandler}
-                              blurFunction={(e) => e}
-                            />
+                            <Form.Floating>
+                              <Form.Select
+                                onChange={selectTrack}
+                                defaultValue=""
+                              >
+                                <option disabled hidden></option>
+                                {tracks.map((pistas) => {
+                                  return (
+                                    <option key={pistas.id} value={pistas.id}>
+                                      {pistas.track_number} - {pistas.type}
+                                    </option>
+                                  );
+                                })}
+                              </Form.Select>
+                              <label htmlFor="floatingInputCustom">
+                                Escoge Pista*
+                              </label>
+                            </Form.Floating>
                             <Form.Label>Fecha</Form.Label>
                             <ReactDatePicker
                               selected={startDate}
