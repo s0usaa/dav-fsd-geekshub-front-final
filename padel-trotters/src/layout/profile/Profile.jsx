@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { userData } from "../../services/userSlice";
-import { updateProfile, viewProfile } from "../../services/apiCalls";
+import { updateProfile, viewCoaches, viewProfile } from "../../services/apiCalls";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
@@ -14,11 +14,11 @@ import { useNavigate } from "react-router-dom";
 
 export const Profile = () => {
   const credentialsRdx = useSelector(userData);
-  const navigate = useNavigate();
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const [welcome, setWelcome] = useState("");
+  const [coaches, setCoaches] = useState([]);
 
   const [userProfile, setUserProfile] = useState({
     name: "",
@@ -52,14 +52,12 @@ export const Profile = () => {
   });
 
   const [valiCredenciales, setValiCredenciales] = useState({
-    coaches_idVali: false,
     nameVali: false,
     surnameVali: false,
     phoneVali: false,
   });
 
   const [credencialesError, setCredencialesError] = useState({
-    coaches_idError: "",
     nameError: "",
     surnameError: "",
     phoneError: "",
@@ -72,6 +70,13 @@ export const Profile = () => {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  const selectCoach = e =>{
+    setUpProfile({
+      ...upProfile,
+      coaches_id: e.target.value
+    });
   };
 
   useEffect(() => {
@@ -136,6 +141,16 @@ export const Profile = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    if (coaches.length === 0) {
+      viewCoaches(credentialsRdx.credentials.token)
+        .then((respuesta) => {
+          setCoaches(respuesta.data.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [coaches]);
 
   return (
     <Container fluid>
@@ -247,27 +262,20 @@ export const Profile = () => {
                 <Form>
                   <Form.Group className="mb-3" controlId="input1">
                     <Form.Floating>
-                      <InputText
-                        className={
-                          credencialesError.coaches_idError === ""
-                            ? "mb-4"
-                            : "mb-4"
-                        }
-                        type={"number"}
-                        name={"coaches_id"}
-                        placeholder={"Elige entre 1 o 2"}
-                        required={true}
-                        maxLenght={1}
-                        changeFunction={(e) => inputHandler(e)}
-                        blurFunction={(e) => checkError(e)}
-                      />
+                      <Form.Select onChange={selectCoach} defaultValue="">
+                        <option disabled hidden></option>
+                        {coaches.map((entrenadores)=>{
+                          return(
+                            <option key={entrenadores.id} value={entrenadores.id}>
+                              {entrenadores.especialidad}
+                            </option>
+                          )
+                        })}
+                      </Form.Select>
                       <label htmlFor="floatingInputCustom">
-                        Escoge entrenador 1 o 2*
+                        Escoge entrenador*
                       </label>
                     </Form.Floating>
-                    <Form.Text className="text-dark">
-                      {credencialesError.coaches_idError}
-                    </Form.Text>
                   </Form.Group>
                   <Form.Group className="mb-3" controlId="input2">
                     <Form.Floating>

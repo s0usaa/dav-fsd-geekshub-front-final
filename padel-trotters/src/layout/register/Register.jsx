@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { validate } from "../../helpers/useful";
-import { register } from "../../services/apiCalls";
+import { register, viewCoaches } from "../../services/apiCalls";
 import Container from "react-bootstrap/esm/Container";
 import Row from "react-bootstrap/esm/Row";
 import Col from "react-bootstrap/esm/Col";
@@ -12,6 +12,7 @@ import "./Register.css";
 export const Register = () => {
   const navigate = useNavigate();
   const [welcome, setWelcome] = useState("");
+  const [coaches, setCoaches] = useState([]);
 
   const [credenciales, setCredenciales] = useState({
     name: "",
@@ -20,6 +21,7 @@ export const Register = () => {
     phone: "",
     email: "",
     password: "",
+    coaches_id: ""
   });
 
   const [valiCredenciales, setValiCredenciales] = useState({
@@ -47,6 +49,13 @@ export const Register = () => {
       ...prevState,
       [e.target.name]: e.target.value,
     }));
+  };
+
+  const selectCoach = e =>{
+    setCredenciales({
+      ...credenciales,
+      coaches_id: e.target.value
+    });
   };
 
   useEffect(() => {
@@ -98,6 +107,16 @@ export const Register = () => {
       })
       .catch((error) => console.log(error));
   };
+
+  useEffect(() => {
+    if (coaches.length === 0) {
+      viewCoaches()
+        .then((respuesta) => {
+          setCoaches(respuesta.data.data);
+        })
+        .catch((error) => console.log(error));
+    }
+  }, [coaches]);
 
   return (
     <Container fluid>
@@ -237,6 +256,23 @@ export const Register = () => {
                 <Form.Text className="text-dark">
                   {credencialesError.passwordError}
                 </Form.Text>
+              </Form.Group>
+              <Form.Group className="mb-1" controlId="formBasicCoach">
+                <Form.Floating>
+                  <Form.Select onChange={selectCoach} defaultValue="">
+                        <option disabled hidden></option>
+                        {coaches.map((entrenadores)=>{
+                          return(
+                            <option key={entrenadores.id} value={entrenadores.id}>
+                              {entrenadores.especialidad}
+                            </option>
+                          )
+                        })}
+                      </Form.Select>
+                      <label htmlFor="floatingInputCustom">
+                        Escoge entrenador*
+                      </label>
+                </Form.Floating>
               </Form.Group>
             </Form>
             <div

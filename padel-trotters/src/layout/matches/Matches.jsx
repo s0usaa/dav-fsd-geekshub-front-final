@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import { userData } from '../../services/userSlice';
-import { newMatch } from '../../services/apiCalls';
+import { newMatch, viewTracks } from '../../services/apiCalls';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/esm/Container';
 import Row from 'react-bootstrap/esm/Row';
@@ -22,17 +22,18 @@ export const Matches = () => {
 const navigate = useNavigate();
 const [welcome, setWelcome] = useState('');
 const credencialesRdx = useSelector(userData);
-const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(),0),10))
+const [startDate, setStartDate] = useState(setHours(setMinutes(new Date(),0),10));
+const [tracks, setTracks] = useState([]);
 
 const [match, setMatch] = useState({
   track_id: '',
   date: ''
 });
 
-const inputHandler = (e) =>{
+const selectTrack = (e) =>{
   setMatch((prevState)=>({
     ...prevState,
-    [e.target.name]: e.target.value,
+    track_id: e.target.value,
   }));
 };
 
@@ -51,6 +52,16 @@ const createMatch = ()=> {
   });
 };
 
+useEffect(() => {
+  if (tracks.length === 0) {
+    viewTracks(credencialesRdx.credentials.token)
+      .then((respuesta) => {
+        setTracks(respuesta.data.data);
+      })
+      .catch((error) => console.log(error));
+  }
+}, [tracks]);
+
   return (
     <Container>
     {welcome !== "" ? (
@@ -65,16 +76,21 @@ const createMatch = ()=> {
       <h1 className="mb-4 text-center">Reserva tu Partida</h1>
         <Form>
           <Form.Group className="mb-3" controlId="formBasicDoctor">
-            <Form.Label>Pistas</Form.Label>
-              <InputText
-              className={''}
-              type={'text'}
-              name={'track_id'}
-              placeholder={'Selecciona pista de 1 a la 4'}
-              maxLength={1}
-              changeFunction={inputHandler}
-              blurFunction={(e)=>(e)}
-              />
+            <Form.Floating>
+            <Form.Select onChange={selectTrack} defaultValue="">
+                        <option disabled hidden></option>
+                        {tracks.map((pistas)=>{
+                          return(
+                            <option key={pistas.id} value={pistas.id}>
+                              {pistas.track_number} - {pistas.type}
+                            </option>
+                          )
+                        })}
+                      </Form.Select>
+                      <label htmlFor="floatingInputCustom">
+                        Escoge Pista*
+                      </label>
+              </Form.Floating>
           </Form.Group>
           <Form.Group className="mb-1" controlId="formBasicDate">
             <Form.Label>Fecha</Form.Label>
